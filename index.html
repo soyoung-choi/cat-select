@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/select.css" />
+  </head>
+  <body>
+    <div class="select-box">
+      <button class="select-btn">고양이 선택하기</button>
+      <ul class="list-container">
+        <li>러시안블루</li>
+        <li>샴</li>
+        <li>스코티시 폴드</li>
+        <li>페르시안</li>
+        <li>벵갈</li>
+      </ul>
+    </div>
+  </body>
+
+  <script>
+    const select_btn = document.querySelector(".select-btn")
+    const list_container = document.querySelector(".list-container")
+    const list_item = document.querySelectorAll(".list-container li")
+
+    select_btn.addEventListener("click", (e) => {
+      if (e) e.preventDefault()
+
+      list_container.classList.add("on")
+      select_btn.classList.add("on")
+    })
+
+    list_item.forEach((item) => {
+      item.addEventListener("mousedown", (e) => {
+        const btn_name = e.currentTarget.textContent
+        select_btn.textContent = btn_name
+
+        select_btn.classList.remove("on")
+        list_container.classList.remove("on")
+      })
+    })
+
+    select_btn.addEventListener("blur", (e) => {
+      list_container.classList.remove("on")
+      select_btn.classList.remove("on")
+    })
+  </script>
+</html>
